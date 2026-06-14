@@ -6,17 +6,348 @@
 
 <title>Sree Photographer</title>
 
-<link rel="stylesheet" href="style.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:
+linear-gradient(
+rgba(0,0,0,.88),
+rgba(0,0,0,.92)
+),
+url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:#fff;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:95%;
+
+padding:15px 25px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.1);
+
+border-radius:20px;
+
+z-index:1000;
+}
+
+.logo{
+font-size:1.5rem;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.menu-container{
+position:relative;
+}
+
+.menu-btn{
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
+}
+
+.menu{
+position:absolute;
+top:50px;
+right:0;
+
+width:200px;
+
+display:none;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border-radius:15px;
+
+padding:15px;
+}
+
+.menu.show{
+display:block;
+animation:fade .3s ease;
+}
+
+.menu a{
+display:block;
+padding:10px;
+color:white;
+text-decoration:none;
+border-radius:10px;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,.1);
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:100px 20px;
+}
+
+.profile-card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+padding:35px;
+
+text-align:center;
+
+max-width:500px;
+
+animation:float 4s infinite ease-in-out;
+}
+
+.profile-card img{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid white;
+}
+
+.profile-card h1{
+margin-top:20px;
+font-size:2rem;
+}
+
+.profile-card p{
+margin-top:10px;
+opacity:.8;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* SECTIONS */
+
+section{
+padding:100px 10%;
+}
+
+.section-title{
+font-size:2.5rem;
+margin-bottom:30px;
+text-align:center;
+}
+
+/* ABOUT */
+
+.about{
+max-width:900px;
+margin:auto;
+text-align:center;
+line-height:1.8;
+font-size:1.1rem;
+}
+
+/* GALLERY */
+
+.gallery{
+column-count:3;
+column-gap:20px;
+}
+
+.gallery img{
+width:100%;
+margin-bottom:20px;
+border-radius:20px;
+cursor:pointer;
+
+transition:.4s;
+
+break-inside:avoid;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+box-shadow:0 0 25px rgba(255,255,255,.3);
+}
+
+/* CONTACT */
+
+.social{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.social a{
+text-decoration:none;
+color:white;
+
+padding:15px 25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:15px;
+
+transition:.3s;
+}
+
+.social a:hover{
+transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+margin:40px;
+
+padding:25px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:20px;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:rgba(0,0,0,.97);
+
+z-index:9999;
+}
+
+.lightbox.active{
+display:flex;
+}
+
+.lightbox img{
+max-width:95%;
+max-height:95%;
+object-fit:contain;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:35px;
+
+font-size:50px;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.gallery{
+column-count:2;
+}
+
+}
+
+@media(max-width:600px){
+
+.gallery{
+column-count:1;
+}
+
+.logo{
+font-size:1rem;
+}
+
+.profile-card img{
+width:160px;
+height:160px;
+}
+
+.profile-card h1{
+font-size:1.5rem;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+}
+
+</style>
+</head>
 <body>
 
-<!-- Navbar -->
 <nav>
 
 <div class="logo">
@@ -26,7 +357,7 @@ Sree Photographer
 <div class="menu-container">
 
 <button class="menu-btn">
-<i class="fa-solid fa-ellipsis-vertical"></i>
+<i class="fas fa-ellipsis-vertical"></i>
 </button>
 
 <div class="menu">
@@ -42,8 +373,6 @@ Sree Photographer
 
 </nav>
 
-<!-- Hero -->
-
 <section id="home" class="hero">
 
 <div class="profile-card">
@@ -53,82 +382,77 @@ Sree Photographer
 <h1>Sreejit Mandal</h1>
 
 <p>
-Beginner Photographer |
-Capturing Life Through My Lens
+Beginner Photographer
+<br>
+Capturing Stories Through My Lens
 </p>
 
 </div>
 
 </section>
-
-<!-- About -->
 
 <section id="about">
 
-<h2>About Me</h2>
+<h2 class="section-title">
+About Me
+</h2>
 
-<p>
+<div class="about">
 
-Hello, I'm Sreejit Mandal, a passionate beginner photographer who loves capturing beautiful moments and creating memories through photography.
+Hello, I'm Sreejit Mandal. Photography is my passion and a way for me
+to capture beautiful moments, emotions, nature, and everyday life.
 
-Every photo tells a story, and this portfolio showcases my journey behind the camera.
+This portfolio showcases some of my favorite photographs and my
+journey as a photographer. Every picture tells a story and reflects
+my perspective of the world.
 
-</p>
+</div>
 
 </section>
 
-<!-- Gallery -->
-
 <section id="gallery">
 
-<h2>My Photography</h2>
+<h2 class="section-title">
+My Photography
+</h2>
 
 <div class="gallery">
 
-<img src="p1.jpeg".jpeg">
-<img src="p2.jpeg".jpeg">
-<img src="p3.jpeg".jpeg">
-<img src="p4.jpeg".jpeg">
-<img src="p5.jpeg".jpeg">
-<img src="p6.jpeg".jpeg">
-<img src="p7.jpeg".jpeg">
-<img src="p8.jpeg".jpeg">
-
-<img src="p10.jpeg".jpeg">
-<img src="p11.jpeg".jpeg">
-<img src="p12.jpeg".jpeg">
-<img src="p13.jpeg".jpeg">
-<img src="p14.jpeg".jpeg">
-<img src="p15.jpeg".jpeg">
-<img src="p16.jpeg".jpeg">
+<img src="2.jpeg">
+<img src="3.jpeg">
+<img src="4.jpeg">
+<img src="5.jpeg">
+<img src="6.jpeg">
+<img src="7.jpeg">
+<img src="8.jpeg">
+<img src="9.jpeg">
+<img src="10.jpeg">
+<img src="12.jpeg">
+<img src="13.jpeg">
+<img src="14.jpeg">
+<img src="15.jpeg">
 
 
 </div>
 
 </section>
 
-<!-- Contact -->
-
 <section id="contact">
 
-<h2>Contact Me</h2>
+<h2 class="section-title">
+Contact Me
+</h2>
 
 <div class="social">
 
-<a href="https://www.instagram.com/srxxjit?igsh=MTBmZm12eDRsbjEzdQ=="
-target="_blank">
-
+<a href="https://instagram.com/_.sreejit._8" target="_blank">
 <i class="fab fa-instagram"></i>
 Instagram
-
 </a>
 
-<a href="https://wa.me/9168392740"
-target="_blank">
-
+<a href="https://wa.me/9168392740" target="_blank">
 <i class="fab fa-whatsapp"></i>
 WhatsApp
-
 </a>
 
 </div>
@@ -138,22 +462,78 @@ WhatsApp
 <footer>
 
 <p>
-© 2026 Sree Photographer | All Rights Reserved
+© 2026 Sree Photographer • All Rights Reserved
 </p>
 
 </footer>
 
-<script src="script.js"></script>
-
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 
 <div class="lightbox" id="lightbox">
 
-    <span class="close">&times;</span>
+<span class="close" id="closeBtn">
+&times;
+</span>
 
-    <img id="lightbox-img" src="" alt="">
+<img id="lightboxImg" src="">
 
 </div>
+
+<script>
+
+const menuBtn =
+document.querySelector(".menu-btn");
+
+const menu =
+document.querySelector(".menu");
+
+menuBtn.addEventListener("click",()=>{
+
+menu.classList.toggle("show");
+
+});
+
+const images =
+document.querySelectorAll(".gallery img");
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImg =
+document.getElementById("lightboxImg");
+
+const closeBtn =
+document.getElementById("closeBtn");
+
+images.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+lightbox.classList.add("active");
+
+lightboxImg.src=img.src;
+
+});
+
+});
+
+closeBtn.addEventListener("click",()=>{
+
+lightbox.classList.remove("active");
+
+});
+
+lightbox.addEventListener("click",(e)=>{
+
+if(e.target===lightbox){
+
+lightbox.classList.remove("active");
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
